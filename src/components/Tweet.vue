@@ -1,25 +1,15 @@
 <template>
   <div className="tweet">
-    <img
-      src="https://i.imgur.com/9yw1Fyw.jpg"
-      className="profile"
-      alt="profile"
-    />
-
+    <ProfileImage :profileImage="user.image"/>
     <div className="body">
       <div className="top">
         <span className="user">
-          <span className="name">Ironhack</span>
-          <span className="handle">@ironhack</span>
+         <User :user="user"/>
         </span>
-
-        <span className="timestamp">Nov 30, 2020</span>
+        <Timestamp :timestamp="timestamp"/>
+        
       </div>
-
-      <p className="message">
-        On December 7th, we will be hosting a #webinar that will introduce you
-        to #SQL! Are you ready? 🚀
-      </p>
+      <Message :message="message"/>
 
       <div className="actions">
         <!-- Font Awesome icons -->
@@ -33,6 +23,28 @@
     <i class="fas fa-ellipsis-h"></i>
   </div>
 </template>
+
+<script>
+import ProfileImage from "./ProfileImage.vue";
+import Message from "./Message.vue";
+import Timestamp from "./Timestamp.vue";
+import User from "./User.vue";
+
+export default {
+  name: "Tweet",
+  components: {
+    Message, ProfileImage, Timestamp, User
+  },
+  props: {
+    user: Object,
+    timestamp: String,
+    message: String,
+    profileImage: String,
+  }
+};
+
+
+</script>
 
 <style scoped>
 a {
